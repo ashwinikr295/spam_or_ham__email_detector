@@ -1,9 +1,12 @@
 import pickle
 import streamlit as st
+import os
+# Get current directory (where emailweb.py is located)
+base_path = os.path.dirname(__file__)
 
-# ===== Load model and vectorizer =====
-feature_extraction = pickle.load(open('E:/feature_extraction.sav', 'rb'))
-loaded_model = pickle.load(open('E:/trained_model.sav', 'rb'))
+# Load model and vectorizer using relative paths
+feature_extraction = pickle.load(open(os.path.join(base_path, 'feature_extraction.sav'), 'rb'))
+loaded_model = pickle.load(open(os.path.join(base_path, 'trained_model.sav'), 'rb'))
 
 # ===== Prediction function =====
 def emailspampredictor(input_mail):
